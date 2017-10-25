@@ -23,7 +23,7 @@ export default () => (
     <DocHead />
 
     <Header size="small" colorIndex="light-2">
-      <Box>
+      <Box pad="small">
         <Logo />
       </Box>
     </Header>
@@ -55,12 +55,12 @@ export default () => (
       >
         <Box basis="1/3" />
         <Box direction="column" justify="center" align="center" basis="1/3">
-          <Heading margin="50px" uppercase="true" strong="true">
+          <Headline size="xlarge" margin="50px" uppercase="true" strong="true">
             VR FIT
-          </Heading>
+          </Headline>
           <Headline margin="50px" align="center" size="small">
             Cinematic 360 VR rowing experience with elite teams and beautiful
-            locations. Travel and get fit from the comfort of your home
+            locations
           </Headline>
           <CirclePlayIcon size="large" colorIndex="white" />
         </Box>
