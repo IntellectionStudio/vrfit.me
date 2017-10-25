@@ -42,30 +42,41 @@ export default () => (
         </Video>
       }
       size="large"
-      style={{ height: "100%", backgroundColor: "black" }}
-      backgroundColorIndex="dark"
+      style={{ backgroundColor: "black" }}
+    />
+
+    <Box
+      style={{
+        position: "absolute",
+        top: 200,
+        marginLeft: "auto",
+        marginRight: "auto",
+        left: 0,
+        right: 0,
+        color: "white"
+      }}
+      direction="row"
+      justify="center"
+      align="center"
     >
-      <Box
-        margin="none"
-        pad="large"
-        direction="row"
-        align="stretch"
-        alignSelf="stretch"
-        basis="full"
-      >
-        <Box basis="1/3" />
-        <Box direction="column" justify="center" align="center" basis="1/3">
-          <Headline size="xlarge" margin="50px" uppercase="true" strong="true">
-            VR FIT
-          </Headline>
-          <Headline margin="50px" align="center" size="small">
-            Cinematic 360 VR rowing experience with elite teams and beautiful
-            locations
-          </Headline>
-          <CirclePlayIcon size="large" colorIndex="white" />
-        </Box>
+      <Box direction="column" justify="center" align="center">
+        <Headline size="xlarge" uppercase="true" strong>
+          VR FIT
+        </Headline>
+        <Headline
+          align="center"
+          size="small"
+          style={{ marginLeft: 50, marginRight: 50 }}
+        >
+          Cinematic 360 VR rowing experience with elite teams and beautiful
+          locations
+        </Headline>
+
+        <a href onClick={() => console.log("clicked")}>
+          <CirclePlayIcon size="large" colorIndex="light-1" />
+        </a>
       </Box>
-    </Hero>
+    </Box>
 
     <Footer
       primary={true}
