@@ -75,11 +75,16 @@ class HomePage extends Component {
         <Hero
           background={
             <Video
-              autoPlay={true}
+              autoPlay
               showControls={false}
-              loop={true}
-              muted={true}
+              loop
+              muted
+              playsInline
               fit="cover"
+              style={{
+                backgroundColor: "black",
+                opacity: 0.8
+              }}
             >
               <source src="/static/video/promovideo.mp4" type="video/mp4" />
             </Video>
@@ -107,7 +112,9 @@ class HomePage extends Component {
               direction="column"
               justify="center"
               align="center"
-              styles={{ paddingLeft: 50 }}
+              styles={{
+                paddingLeft: 50
+              }}
             >
               <Headline align="center" size="xlarge" uppercase="true" strong>
                 VR FIT
