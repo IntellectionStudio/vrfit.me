@@ -35,6 +35,7 @@ const Head = props => (
       rel="stylesheet"
       type="text/css"
     />
+    <link href="/static/styles.css" rel="stylesheet" type="text/css" />
   </NextHead>
 );
 
