@@ -46,4 +46,8 @@ Head.propTypes = {
   ogImage: string
 };
 
+Head.defaultProps = {
+  title: "VRFit"
+};
+
 export default Head;
