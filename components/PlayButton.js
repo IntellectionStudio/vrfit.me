@@ -3,24 +3,31 @@ import React, { Component } from "react";
 class PlayButton extends Component {
   render() {
     return (
-      <svg
-        version="1.1"
-        id="Capa_1"
-        x="0px"
-        y="0px"
-        viewBox="0 0 60 60"
-        width="50px"
-        height="50px"
-      >
-        <g>
-          <path
-            d="M45.563,29.174l-22-15c-0.307-0.208-0.703-0.231-1.031-0.058C22.205,14.289,22,14.629,22,15v30   c0,0.371,0.205,0.711,0.533,0.884C22.679,45.962,22.84,46,23,46c0.197,0,0.394-0.059,0.563-0.174l22-15   C45.836,30.64,46,30.331,46,30S45.836,29.36,45.563,29.174z M24,43.107V16.893L43.225,30L24,43.107z"
-            fill="#FFFFFF"
-          />
-          <path
-            d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M30,58C14.561,58,2,45.439,2,30   S14.561,2,30,2s28,12.561,28,28S45.439,58,30,58z"
-            fill="#FFFFFF"
-          />
+      <svg width="88px" height="88px" viewBox="0 0 88 88" version="1.1">
+        <g
+          id="VR-FIT"
+          stroke="none"
+          strokeWidth="1"
+          fill="none"
+          fillRule="evenodd"
+        >
+          <g
+            id="VR-Fit-Desktop"
+            transform="translate(-676.000000, -690.000000)"
+          >
+            <g id="Play-Icon" transform="translate(672.000000, 686.000000)">
+              <rect id="viewBox" x="0" y="0" width="96" height="96" />
+              <g id="icon-link-next">
+                <rect id="viewBox" x="0" y="0" width="96" height="96" />
+                <path
+                  d="M48,88 C70.09139,88 88,70.09139 88,48 C88,25.90861 70.09139,8 48,8 C25.90861,8 8,25.90861 8,48 C8,70.09139 25.90861,88 48,88 Z M38,62 L62,47.9999998 L38,34 L38,62 Z M42,54 L50,47.9999999 L42,42 L42,54 Z"
+                  id="Play"
+                  stroke="#FFFFFF"
+                  stroke-width="8"
+                />
+              </g>
+            </g>
+          </g>
         </g>
       </svg>
     );
