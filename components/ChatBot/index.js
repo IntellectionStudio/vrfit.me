@@ -37,7 +37,7 @@ class ChatForm extends Component {
 
     if (steps.contactMessageCompany) {
       message = steps.contactMessageCompany.value;
-      EMAIL_TO = "info@vrfit.me";
+      EMAIL_TO = "contact@vrfit.me";
     }
 
     fetch(MAND_LINK, {
@@ -48,7 +48,7 @@ class ChatForm extends Component {
           from_email: MAND_EMAIL,
           to: [
             {
-              email: INTELLECTION_EMAIL,
+              email: EMAIL_TO,
               type: "to"
             }
           ],
@@ -147,7 +147,7 @@ class ChatForm extends Component {
             {
               id: "contactUs",
               message:
-                "You can always email us on info@vrfit.me. Alternatively, you can contact one of our team members or write your message in this chat.",
+                "You can always email us on contact@vrfit.me. Alternatively, you can contact one of our team members or write your message in this chat.",
               trigger: "contactUsOptions"
             },
 
