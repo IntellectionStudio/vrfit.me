@@ -14,64 +14,32 @@ const theme = {
   userFontColor: "#4a4a4a"
 };
 
-var name;
-var age;
-var gender;
-
-class Review extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      name: "",
-      gender: "",
-      age: ""
-    };
-  }
-
-  componentWillMount() {
-    const { steps } = this.props;
-    const { name, gender, age } = steps;
-
-    this.setState({ name, gender, age });
-  }
-
-  render() {
-    const { name, gender, age } = this.state;
-    return (
-      <div style={{ width: "100%" }}>
-        <h3>Summary</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td>Name</td>
-              <td>{name.value}</td>
-            </tr>
-            <tr>
-              <td>Gender</td>
-              <td>{gender.value}</td>
-            </tr>
-            <tr>
-              <td>Age</td>
-              <td>{age.value}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-}
-
 class ChatForm extends Component {
   handleEnd({ steps, values }) {
     const MAND_LINK = "https://mandrillapp.com/api/1.0/messages/send.json";
     const KEY = "B1AoYTIo1KTLERLF1WOiRg";
     const MAND_EMAIL = "info@intellection.kz";
-    const INTELLECTION_EMAIL = "intellection.kz@gmail.com";
+    const INTELLECTION_EMAIL = "telegin.zhenya@gmail.com";
 
     const MESSAGE_RECEVIED = "Сообщение доставлено";
     const MESSAGE_NOT_RECEVIED = "Сообщение не доставлено";
-    console.log(steps.age.value, steps.name.value, steps.gender.value);
+    var message;
+    var EMAIL_TO;
+    if (steps.contactMessageIliyas) {
+      message = steps.contactMessageIliyas.value;
+      EMAIL_TO = "iliyas@vrfit.me";
+    }
+
+    if (steps.contactMessageBakytzhan) {
+      message = steps.contactMessageBakytzhan.value;
+      EMAIL_TO = "bb@vrfit.me";
+    }
+
+    if (steps.contactMessageCompany) {
+      message = steps.contactMessageCompany.value;
+      EMAIL_TO = "info@vrfit.me";
+    }
+
     fetch(MAND_LINK, {
       method: "POST",
       body: JSON.stringify({
@@ -84,13 +52,13 @@ class ChatForm extends Component {
               type: "to"
             }
           ],
-          subject: "CONTACT US FORM (vrfit.me)",
-          html: `test`
+          subject: `For ${EMAIL_TO}`,
+          html: `For ${EMAIL_TO}:\n${message}`
         }
       })
     })
-      .then(() => console.log("message sended successfuly"))
-      .catch(() => console.log("error"));
+      .then(() => console.log("Message sended successfuly"))
+      .catch(() => console.log("Error"));
   }
   render() {
     return (
@@ -103,101 +71,147 @@ class ChatForm extends Component {
           steps={[
             {
               id: "1",
-              message: "What is your name?",
-              trigger: "name"
+              message:
+                "Welcome to VRFIT's official website! We develop immersive 8K cinematic VR rowing experience at the most beautiful locations with elite rowing teams.\nWant to know more?",
+              trigger: "2"
             },
             {
-              id: "name",
-              user: true,
+              id: "2",
+              message:
+                "We develop immersive 8K cinematic VR rowing experience at the most beautiful locations with elite rowing teams.",
               trigger: "3"
             },
             {
               id: "3",
-              message: "Hi {previousValue}! What is your gender?",
-              trigger: "gender"
+              message: "Want to know more?",
+              trigger: "4"
             },
             {
-              id: "gender",
+              id: "4",
               options: [
-                { value: "male", label: "Male", trigger: "5" },
-                { value: "female", label: "Female", trigger: "5" }
-              ]
-            },
-            {
-              id: "5",
-              message: "How old are you?",
-              trigger: "age"
-            },
-            {
-              id: "age",
-              user: true,
-              trigger: "7",
-              validator: value => {
-                if (isNaN(value)) {
-                  return "value must be a number";
-                } else if (value < 0) {
-                  return "value must be positive";
-                } else if (value > 120) {
-                  return `${value}? Come on!`;
+                {
+                  value: "learnMore",
+                  label: "Learn More",
+                  trigger: "learnMore"
+                },
+                {
+                  value: "contactUsButton",
+                  label: "Contact Us",
+                  trigger: "contactUs"
                 }
+              ]
+            },
+            {
+              id: "learnMore",
+              message:
+                "We are currently at the stage of building a product and looking for an investor. If you would like to know more about our project and team, please, choose one of the following options",
+              trigger: "learnMoreOptions"
+            },
+            {
+              id: "learnMoreOptions",
+              options: [
+                {
+                  value: "seePresentation",
+                  label: "See presentation",
+                  trigger: "seePresentation"
+                },
+                { value: "seeVideo", label: "See video", trigger: "seeVideo" },
+                {
+                  value: "contactUsButton",
+                  label: "Contact Us",
+                  trigger: "contactUs"
+                }
+              ]
+            },
+            {
+              id: "seePresentation",
+              component: (
+                <div style={{ textAlign: "center" }}>
+                  <a href="#">Link for presentation</a>
+                </div>
+              ),
+              trigger: "learnMoreOptions"
+            },
+            {
+              id: "seeVideo",
+              component: (
+                <div style={{ textAlign: "center" }}>
+                  <a href="https://www.youtube.com/watch?v=HvzyeukKeL4">
+                    https://www.youtube.com/watch?v=HvzyeukKeL4
+                  </a>
+                </div>
+              ),
+              trigger: "learnMoreOptions"
+            },
 
-                return true;
-              }
-            },
             {
-              id: "7",
-              message: "Great! Check out your summary",
-              trigger: "review"
+              id: "contactUs",
+              message:
+                "You can always email us on info@vrfit.me. Alternatively, you can contact one of our team members or write your message in this chat.",
+              trigger: "contactUsOptions"
             },
+
             {
-              id: "review",
-              component: <Review />,
-              asMessage: true,
-              trigger: "update"
-            },
-            {
-              id: "update",
-              message: "Would you like to update some field?",
-              trigger: "update-question"
-            },
-            {
-              id: "update-question",
+              id: "contactUsOptions",
               options: [
-                { value: "yes", label: "Yes", trigger: "update-yes" },
-                { value: "no", label: "No", trigger: "end-message" }
+                {
+                  value: "contactIliyas",
+                  label: "Iliyas Issatayev",
+                  trigger: "contactIliyas"
+                },
+                {
+                  value: "contactBakytzhan",
+                  label: "Bakytzhan Baizhikenov",
+                  trigger: "contactBakytzhan"
+                },
+                {
+                  value: "contactCompany",
+                  label: "Company email",
+                  trigger: "contactCompany"
+                }
               ]
             },
+
             {
-              id: "update-yes",
-              message: "What field would you like to update?",
-              trigger: "update-fields"
+              id: "contactIliyas",
+              message: "Type your message for Iliyas Issatayev",
+              trigger: "contactMessageIliyas"
             },
+
             {
-              id: "update-fields",
-              options: [
-                { value: "name", label: "Name", trigger: "update-name" },
-                { value: "gender", label: "Gender", trigger: "update-gender" },
-                { value: "age", label: "Age", trigger: "update-age" }
-              ]
+              id: "contactBakytzhan",
+              message: "Type your message for Bakytzhan Baizhikenov",
+              trigger: "contactMessageBakytzhan"
             },
+
             {
-              id: "update-name",
-              update: "name",
-              trigger: "7"
+              id: "contactCompany",
+              message:
+                "Type your message, and one of our team members will contact you.",
+              trigger: "contactMessageCompany"
             },
+
             {
-              id: "update-gender",
-              update: "gender",
-              trigger: "7"
+              id: "contactMessageIliyas",
+              user: true,
+              trigger: "getMessage"
             },
+
             {
-              id: "update-age",
-              update: "age",
-              trigger: "7"
+              id: "contactMessageBakytzhan",
+              user: true,
+              trigger: "getMessage"
             },
+
             {
-              id: "end-message",
-              message: "Thanks! Your data was submitted successfully!",
+              id: "contactMessageCompany",
+              user: true,
+              trigger: "getMessage"
+            },
+
+            {
+              id: "getMessage",
+              message: "Thank you for your message :)",
               end: true
             }
           ]}
