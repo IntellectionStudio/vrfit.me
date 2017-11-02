@@ -14,8 +14,12 @@ const theme = {
   userFontColor: "#4a4a4a"
 };
 
-class ChatForm extends Component {
-  handleEnd({ steps, values }) {
+class Response extends Component {
+  state = {
+    response: "Processing..."
+  };
+  componentWillMount() {
+    const { steps } = this.props;
     const MAND_LINK = "https://mandrillapp.com/api/1.0/messages/send.json";
     const KEY = "B1AoYTIo1KTLERLF1WOiRg";
     const MAND_EMAIL = "info@intellection.kz";
@@ -57,9 +61,17 @@ class ChatForm extends Component {
         }
       })
     })
-      .then(() => console.log("Message sended successfuly"))
-      .catch(() => console.log("Error"));
+      .then(() =>
+        this.setState({ response: "Thank you! Your message was sended :)" })
+      )
+      .catch(() => this.setState({ response: "Error. Please try again :(" }));
   }
+  render() {
+    return <div style={{ textAlign: "center" }}>{this.state.response}</div>;
+  }
+}
+
+class ChatForm extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -166,7 +178,7 @@ class ChatForm extends Component {
                 },
                 {
                   value: "contactCompany",
-                  label: "Company email",
+                  label: "Company Email",
                   trigger: "contactCompany"
                 }
               ]
@@ -211,8 +223,7 @@ class ChatForm extends Component {
 
             {
               id: "getMessage",
-              message: "Thank you for your message :)",
-              end: true
+              component: <Response />
             }
           ]}
         />

@@ -23,7 +23,7 @@ class PlayButton extends Component {
                   d="M48,88 C70.09139,88 88,70.09139 88,48 C88,25.90861 70.09139,8 48,8 C25.90861,8 8,25.90861 8,48 C8,70.09139 25.90861,88 48,88 Z M38,62 L62,47.9999998 L38,34 L38,62 Z M42,54 L50,47.9999999 L42,42 L42,54 Z"
                   id="Play"
                   stroke="#FFFFFF"
-                  stroke-width="8"
+                  strokeWidth="8"
                 />
               </g>
             </g>
