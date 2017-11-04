@@ -18,6 +18,7 @@ class Response extends Component {
   state = {
     response: "Processing..."
   };
+
   componentWillMount() {
     const { steps } = this.props;
     const MAND_LINK = "https://mandrillapp.com/api/1.0/messages/send.json";
@@ -67,7 +68,11 @@ class Response extends Component {
       .catch(() => this.setState({ response: "Error. Please try again :(" }));
   }
   render() {
-    return <div style={{ textAlign: "center" }}>{this.state.response}</div>;
+    return (
+      <div>
+        <div style={{ textAlign: "center" }}>{this.state.response}</div>
+      </div>
+    );
   }
 }
 
