@@ -63,7 +63,7 @@ class Response extends Component {
       })
     })
       .then(() =>
-        this.setState({ response: "Thank you! Your message was sended :)" })
+        this.setState({ response: "Thank you! Your message was sent :)" })
       )
       .catch(() => this.setState({ response: "Error. Please try again :(" }));
   }
@@ -144,7 +144,10 @@ class ChatForm extends Component {
               id: "seePresentation",
               component: (
                 <div style={{ textAlign: "center" }}>
-                  <a href="https://drive.google.com/open?id=0B5EXl4oZKIF4czh2TmdwZi1qT1k">
+                  <a
+                    href="https://drive.google.com/open?id=0B5EXl4oZKIF4czh2TmdwZi1qT1k"
+                    target="_blank"
+                  >
                     Google Drive (pdf)
                   </a>
                 </div>
