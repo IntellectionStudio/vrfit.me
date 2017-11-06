@@ -144,7 +144,9 @@ class ChatForm extends Component {
               id: "seePresentation",
               component: (
                 <div style={{ textAlign: "center" }}>
-                  <a href="#">Link for presentation</a>
+                  <a href="https://drive.google.com/open?id=0B5EXl4oZKIF4czh2TmdwZi1qT1k">
+                    Google Drive (pdf)
+                  </a>
                 </div>
               ),
               trigger: "learnMoreOptions"
