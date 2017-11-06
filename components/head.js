@@ -47,7 +47,7 @@ Head.propTypes = {
 };
 
 Head.defaultProps = {
-  title: "VRFit"
+  title: "VRFit - Travel and Fitness come together"
 };
 
 export default Head;
