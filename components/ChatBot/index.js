@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
+import "whatwg-fetch";
 
 const theme = {
   background: "#f5f8fb",
