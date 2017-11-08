@@ -133,7 +133,16 @@ class ChatForm extends Component {
                   label: "See presentation",
                   trigger: "seePresentation"
                 },
-                { value: "seeVideo", label: "See video", trigger: "seeVideo" },
+                {
+                  value: "seePromoVideo",
+                  label: "See promo video",
+                  trigger: "seePromoVideo"
+                },
+                {
+                  value: "seeRealLifeTest",
+                  label: "Real life test",
+                  trigger: "seeRealLifeTest"
+                },
                 {
                   value: "contactUsButton",
                   label: "Contact Us",
@@ -156,11 +165,22 @@ class ChatForm extends Component {
               trigger: "learnMoreOptions"
             },
             {
-              id: "seeVideo",
+              id: "seePromoVideo",
               component: (
                 <div style={{ textAlign: "center" }}>
                   <a href="https://www.youtube.com/watch?v=HvzyeukKeL4">
-                    https://www.youtube.com/watch?v=HvzyeukKeL4
+                    Promo Video
+                  </a>
+                </div>
+              ),
+              trigger: "learnMoreOptions"
+            },
+            {
+              id: "seeRealLifeTest",
+              component: (
+                <div style={{ textAlign: "center" }}>
+                  <a href="https://youtu.be/oTnRz8wJ4jA">
+                    Real life test in Invictus Fitness
                   </a>
                 </div>
               ),
